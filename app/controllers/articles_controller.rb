@@ -18,11 +18,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    article = Article.find(params[:id])
+
   end
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = Article.new()
 
     respond_to do |format|
       if @article.save
