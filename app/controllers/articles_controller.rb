@@ -8,23 +8,21 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
-    article = Article.find(params[:id])
   end
 
   # GET /articles/new
   def new
-    @article = Article.all
+    @article = Article.new
   end
 
   # GET /articles/1/edit
   def edit
     article = Article.find(params[:id])
-
   end
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new()
+    @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: "Article was successfully created." }
