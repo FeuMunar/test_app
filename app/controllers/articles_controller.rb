@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
+    @article = Article.all
   end
 
   # GET /articles/1/edit
