@@ -11,14 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group row">
+    <%= form.label :title,class:"col-2 col-form-label" %>
+    <div class="col-10">
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group row">
+    
+    <%= form.label :description, class:"col-2 col-form-label" %>
+    <div class="col-10">
+    <%= form.text_area :description, rows: 10,class:"form-control" %>
+  </div>
   </div>
 
   <div class="actions">
