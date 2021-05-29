@@ -1,16 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div id="page-content">
+  <p id="notice"><%= notice %></p>
 
-<h1 style = color:red;>
-  <h1>Showing Article Details</h1>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</h1>
-
-<p>
-  <strong>Description:</strong>
-  <%= @article.description %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path%> |
-<%= link_to 'Delete', article_path(@article),method: :delete, data: {confirm: "Are you sure?"} %>
+  <h1 class="text-center mt-4"><%= @article.title %></h1>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-8 text-center mt-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded ">
+          <h5 class="card-header font-italic">Featured</h5>
+        <div class="card-body">
+            <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-primary"%>
+            <%= link_to 'Delete', article_path(@article), class:"btn btn-outline-danger",method: :delete%>
+        </div>
+        <div class="card-footer text-muted">
+            <small>Created <%= time_ago_in_words(@article.created_at) %> ago, edited <%=time_ago_in_words(@article.updated_at) %> ago</small>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
