@@ -1,7 +1,8 @@
 <% if obj.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(obj.errors.count, "error") %> Following Errors prevented from being saved:</h2>
-
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading"> 
+    <%= pluralize(obj.errors.count, "error") %> Following Errors prevented the <%= obj.class.name.downcase %>  from being saved:
+  </h4>
   <ul>
     <% obj.errors.each do |error| %>
       <li><%= error.full_message %></li>
