@@ -10,6 +10,9 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @articles = @user.articles
     end
+    def index
+    @user = User.all
+    end
 
     def update
     @user = User.find(params[:id])
