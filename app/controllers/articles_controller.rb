@@ -3,11 +3,15 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @article = Article.all
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+  end
+  def index
+    @article = Article.paginate(page: params[:page], per_page: 5)
+  
   end
 
   # GET /articles/new
@@ -17,7 +21,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    article = Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   # POST /articles or /articles.json
