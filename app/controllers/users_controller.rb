@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update]
-    before_action :require_user, except: [:show, :index]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:edit, :index, :new, :create]
     before_action :require_same_user, only: [:edit, :update, :destroy]
   
     def new
@@ -30,12 +30,20 @@ class UsersController < ApplicationController
     end
 
     def create
+        @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
             flash[:notice] = "Welcome to the Alpha Omega #{@user.username}, you have successfully Sign Up"
             redirect_to articles_path
         else
             render 'new'
+    end
+
+    def destroy
+        @user.destroy
+        session[:user_id] = nil
+        flash[:notice] = "Account and all articles are deleted"
+        redirect_to root_path
     end
 end
     private
